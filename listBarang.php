@@ -61,7 +61,7 @@
       <td><?php echo "$data[merk]";?></td>
       <td><?php echo "$data[jumlah]";?></td>
       <td>
-      <?php echo "<a href='editb.php?id=$data[id]'><button class='btn btn-warning'>Edit</button></a> <a href='javascript:hapusData(".$data['id'].")'><button class='btn btn-danger'>Hapus</button></a>"; ?></td>
+      <?php echo "<a href='editbarang.php?id=$data[id]'><button class='btn btn-warning'>Edit</button></a> <a href='javascript:hapusData(".$data['id'].")'><button class='btn btn-danger'>Hapus</button></a>"; ?></td>
     </tr>
     <?php endforeach; ?>
   </tbody>
