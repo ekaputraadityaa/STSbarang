@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `barang` (
   `id` int(30) NOT NULL,
-  `kode_brg` varchar(150) NOT NULL,
+  `kode_brg` varchar(150) NOT NULL AUTO_INCREMENT,
   `nama_brg` varchar(150) NOT NULL,
   `kategori` varchar(100) NOT NULL,
   `merk` varchar(100) NOT NULL,
@@ -50,7 +50,7 @@ INSERT INTO `barang` (`id`, `kode_brg`, `nama_brg`, `kategori`, `merk`, `jumlah`
 --
 
 CREATE TABLE `peminjaman` (
-  `id_pinjam` int(30) NOT NULL,
+  `id_pinjam` int(30) NOT NULL AUTO_INCREMENT,
   `tgl_pinjam` date NOT NULL,
   `tgl_kembali` date NOT NULL,
   `no_identitas` varchar(100) NOT NULL,
