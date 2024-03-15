@@ -38,7 +38,7 @@ $number = 0
         </nav>
     </div>
     <div class ="container">
-    <h1>List Barang</h1>   <button><a href="add1.php">ADD</a></button>
+    <h1>List Barang</h1> 
     <table class="table w-100 mt-2" id="table">
     <thead>
                     <tr>
