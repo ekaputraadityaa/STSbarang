@@ -61,13 +61,7 @@
       <td><?php echo "$data[merk]";?></td>
       <td><?php echo "$data[jumlah]";?></td>
       <td>
-      <form class="btn btn-warning" action="" method="post">
-                                        <input type="hidden" value="<?= $data['id']; ?>" name="id">
-                                        <button type="button" name="edit" value="<?= $data['id']; ?>"
-                                            class='btn btn-primary' data-toggle='modal'
-                                            data-target='#staticBackdrop'>Edit</button>
-                                    </form>  
-      <?php echo " <a href='javascript:hapusData(".$data['id'].")'><button class='btn btn-danger'>Hapus</button></a>"; ?></td>
+      <?php echo "<a href='editb.php?id=$data[id]'><button class='btn btn-warning'>Edit</button></a> <a href='javascript:hapusData(".$data['id'].")'><button class='btn btn-danger'>Hapus</button></a>"; ?></td>
     </tr>
     <?php endforeach; ?>
   </tbody>
