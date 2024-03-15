@@ -1,58 +1,56 @@
 <?php
-require_once 'koneksi.php';
-if (isset($_POST["edit"])) {
-    $id = $_POST["id"];
-    $idBtn = $_POST["edit"];
-    $data = editbarang("barang", $id);
-} else {
-    null;
-}
+  require_once("koneksi.php");
+  $data=Editdata("barang",$_GET['id']);
 ?>
 
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
+    <title>Insert Barang</title>
   </head>
   <body>
-  <div class="container mt-5">
-        <h4 class="text-center">Ubah Barang</h4>
-        <form class="" method="post">
-            <input type="hidden" name="id_pinjam" value="<?= $pinjam['id_pinjam']; ?>">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" value="<?= $pinjam['username']; ?>" class="form-control" name="username" id="username" placeholder="Username" required>
-            </div>
-            <div class="form-group">
-                <label for="kode_brg">Kode Barang</label>
-                <input type="text" value="<?= $pinjam['kode_brg']; ?>" class="form-control" name="kode_brg" id="kode_brg" placeholder="Kode Barang" required>
-            </div>
-            <div class="form-group">
-                <label for="namabrng">Nama Barang</label>
-                <input type="text" value="<?= $pinjam['nama_brg']; ?>" class="form-control" name="namabrng" id="namabrng" placeholder="Nama Barang" required>
-            </div>
-            <div class="form-group">
-                <label for="jumlahh">Jumlah</label>
-                <input type="text" value="<?= $pinjam['jumlah']; ?>" class="form-control" name="jumlahh" id="jumlahh" placeholder="jumlahh" required>
-            </div>
-            <div class="form-group">
-                <label for="tanggal_kembali">Tanggal Kembali</label>
-                <input type="date" value="<?= $pinjam['tanggal_kembali']; ?>" class="form-control" name="tanggal_kembali" id="tanggal_kembali" placeholder="Tanggal Kembali" required>
-            </div>
-            <button type="submit" name="submit" class="btn btn-primary" style="float: right;">Ubah</button>
-        </form>
+
+    <div class="container">
+    <h1> Edit Barang </h1>
+    <?php while($barang= mysqli_fetch_array($data)): ?>
+    <form action="update.php" method="post">
+      <input type="hidden" class="form-control" name="id" value="<?= $barang['id'];?>">
+  <div class="form-group">
+    <label>Kode Barang</label>
+    <input type="text" class="form-control" name="kodeBrg">
+  </div>
+  <div class="form-group">
+    <label>Nama Barang</label>
+    <input type="text" class="form-control" name="namaBrg">
+  </div>
+  <div class="form-group">
+    <label>Kategori</label>
+    <input type="text" class="form-control" name="kategori">
+  </div>
+  <div class="form-group">
+    <label>Merk</label>
+    <input type="text" class="form-control" name="merk">
+  </div>
+  <div class="form-group">
+    <label>Jumlah</label>
+    <input type="text" class="form-control" name="jumlah">
+  </div>
+  <button type="submit" name="update" class="btn btn-primary">Submit</button>
+</form>
+    <?php endwhile; ?>
     </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    -->
   </body>
 </html>
