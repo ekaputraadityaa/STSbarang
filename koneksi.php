@@ -4,7 +4,7 @@ $username = "root";
 $password = "";
 $dbName = "peminjaman_barang";
 
-$conn = mysqli_connect($server, $username, $password, $dbName);
+$conn=mysqli_connect($server, $username, $password, $dbName);
 
 function listbarang()
 {
@@ -101,26 +101,27 @@ function TambahDataPmj($tgl_pinjam, $tgl_kembali, $no_identitas, $kode_barang, $
     }
 }
 
-function update($table, $id, $kode, $nama, $kategori, $merk, $jumlah) {
+function Editdata($tablename,$id)
+{
     global $conn;
-    $sql = "UPDATE $table SET kode = '$kode', nama = '$nama', kategori = '$kategori', merk = '$merk', jumlah = '$jumlah' WHERE id = '$id'";
+    $hasil=mysqli_query($conn,"select * from $tablename where id='$id'");
+    return $hasil;
+}
+
+function updateBarang($table, $id, $kode_brg, $nama_brg, $kategori, $merk, $jumlah)
+{
+    global $conn;
+    $sql = "UPDATE $table SET kode_brg ='$kode_brg', nama_brg ='$nama_brg', kategori ='$kategori', merk = '$merk', jumlah ='$jumlah' WHERE id = '$id'";
     $hasil=mysqli_query($conn,$sql);
     return $hasil;
 }
 
-function editpinjam($table, $id, $tglPinjam, $tglKembali, $kode, $jumlah) {
+function updatePeminjaman($table, $id, $tgl_pinjam, $tgl_kembali, $no_identitas, $kode_barang, $jumlah)
+{
     global $conn;
-    $sql = "UPDATE $table SET tgl_pinjam = '$tglPinjam', tgl_kembali = '$tglKembali', kode_brg = '$kode', jumlah = '$jumlah' WHERE id = '$id'";
+    $sql = "UPDATE $table SET tgl_pinjam = '$tgl_pinjam', tgl_kembali = '$tgl_kembali', no_identitas = '$no_identitas', kode_barang = '$kode_barang', jumlah = '$jumlah' WHERE id = '$id'";
     $hasil=mysqli_query($conn,$sql);
     return $hasil;
 }
-
-function editbarang($table, $id, $tglPinjam, $tglKembali, $kode, $jumlah) {
-    global $conn;
-    $sql = "UPDATE $table SET tgl_pinjam = '$tglPinjam', tgl_kembali = '$tglKembali', kode_brg = '$kode', jumlah = '$jumlah' WHERE id = '$id'";
-    $hasil=mysqli_query($conn,$sql);
-    return $hasil;
-}
-
 
 ?>
